@@ -1,0 +1,43 @@
+{
+
+  "editor.tabSize": 2,
+
+  "editor.renderFinalNewline": true,
+
+  "search.exclude": {
+    "**/.yarn": true,
+    "**/.pnp.*": true,
+    "**/node_modules": true
+  },
+
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "webpack.config.d.ts": true,
+    "yarn.lock": true,
+    "tsconfig.tsbuildinfo": true,
+    ".pnp.*": true
+  },
+
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+
+  "window.title": "🤢 Pokemon Lists ${separator}${dirty}${activeEditorShort}",
+  // to differntiate projects
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#02531d",
+    "statusBar.foreground": "#000",
+    "titleBar.activeBackground": "#02531d",
+    "titleBar.activeForeground": "#000",
+    "titleBar.inactiveForeground": "#000",
+    "titleBar.inactiveBackground": "#508762"
+  }
+}

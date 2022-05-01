@@ -1,0 +1,14 @@
+.table-group-caught, .table-group-id {
+  width: 30px;
+}
+
+.table-group-name {
+  width: 250px;
+}
+
+.table-list-pokemon {
+  // types Column
+  tbody tr td:nth-child(4) {
+    text-align: left;
+  }
+}
