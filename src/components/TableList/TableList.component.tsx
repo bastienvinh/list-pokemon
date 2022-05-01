@@ -34,8 +34,20 @@ const TypesColor = {
 type KEYOF_TypesColor = keyof typeof TypesColor
 
 export const TableList: React.FC<TableListProps> = ({ data }) => {
+  
+  const onChangeSelectedMonsterHandler = () => {
+    
+  }
 
   const columns = useMemo(() => [
+    {
+      Header: "",
+      accessor: "caught",
+      Cell: ({ row }: CellProps<PokemonModel>) => {
+        const data = row.original
+        return <input type="checkbox" name={`input-checkbox-${data.id}`} onChange={onChangeSelectedMonsterHandler} />
+      }
+    },
     {
       Header: "#",
       accessor: "id"
@@ -77,52 +89,54 @@ export const TableList: React.FC<TableListProps> = ({ data }) => {
   // #endregion
 
   return (
-    <table className="table-list-pokemon table-auto" {...getTableProps()}>
-      <colgroup>
-        <col className="table-group-caught"></col>
-        <col className="table-group-id"></col>
-        <col className="table-group-name"></col>
-      </colgroup>
-      <thead>
-        {// Loop over the header rows
-        headerGroups.map(headerGroup => (
-          // Apply the header row props
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {// Loop over the headers in each row
-            headerGroup.headers.map(column => (
-              // Apply the header cell props
-              <th {...column.getHeaderProps()}>
-                {// Render the header
-                column.render('Header')}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      {/* Apply the table body props */}
-      <tbody {...getTableBodyProps()}>
-        {// Loop over the table rows
-        rows.map(row => {
-          // Prepare the row for display
-          prepareRow(row)
-          return (
-            // Apply the row props
-            <tr {...row.getRowProps()}>
-              {// Loop over the rows cells
-              row.cells.map(cell => {
-                // Apply the cell props
-                return (
-                  <td className="text-center" {...cell.getCellProps()}>
-                    {// Render the cell contents
-                    cell.render('Cell')}
-                  </td>
-                )
-              })}
+    <form className="grid">
+      <table className="table-list-pokemon table-auto" {...getTableProps()}>
+        <colgroup>
+          <col className="table-group-caught"></col>
+          <col className="table-group-id"></col>
+          <col className="table-group-name"></col>
+        </colgroup>
+        <thead>
+          {// Loop over the header rows
+          headerGroups.map(headerGroup => (
+            // Apply the header row props
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {// Loop over the headers in each row
+              headerGroup.headers.map(column => (
+                // Apply the header cell props
+                <th {...column.getHeaderProps()}>
+                  {// Render the header
+                  column.render('Header')}
+                </th>
+              ))}
             </tr>
-          )
-        })}
-      </tbody>
-    </table>
+          ))}
+        </thead>
+        {/* Apply the table body props */}
+        <tbody {...getTableBodyProps()}>
+          {// Loop over the table rows
+          rows.map(row => {
+            // Prepare the row for display
+            prepareRow(row)
+            return (
+              // Apply the row props
+              <tr {...row.getRowProps()}>
+                {// Loop over the rows cells
+                row.cells.map(cell => {
+                  // Apply the cell props
+                  return (
+                    <td className="text-center" {...cell.getCellProps()}>
+                      {// Render the cell contents
+                      cell.render('Cell')}
+                    </td>
+                  )
+                })}
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
+    </form>
   )
 }
 

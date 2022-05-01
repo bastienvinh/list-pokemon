@@ -29,14 +29,14 @@ const Home = () => {
     setNumberCaught(selectedPokemons.length)
   }, [selectedPokemons])
 
-  const onChangeSelectedHandler = () => {
-    // Take all at once
-    const formData = new FormData(formRef.current!)
-    const selected = Array.from(formData.values())
-                            .map(value => parseInt(value.toString(), 10))
+  // const onChangeSelectedHandler = () => {
+  //   // Take all at once
+  //   const formData = new FormData(formRef.current!)
+  //   const selected = Array.from(formData.values())
+  //                           .map(value => parseInt(value.toString(), 10))
 
-    setSelectedPokemons(selected)
-  }
+  //   setSelectedPokemons(selected)
+  // }
 
   const filteredPokemons = useMemo(() => pokemons.filter(pokemon => 
     (searchPattern?.length && pokemon.name.includes(searchPattern)) 
@@ -75,10 +75,7 @@ const Home = () => {
         />
       </div>
       <div className="p-20 flex flex-row gap-12 items-start">
-        <form ref={formRef} className="grid">
-          <TableList data={filteredPokemons} />
-        </form>
-
+        <TableList data={filteredPokemons} />
         <ResultCard nb={numberCaught} max={numberPokemonMax} percent={percentCaught} />
       </div>
     </Fragment>
